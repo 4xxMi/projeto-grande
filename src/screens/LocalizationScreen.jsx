@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as Location from "expo-location";
-import { styles } from "../config/style";
+import { styles } from "../config/styles";
 import { Button, Surface, Text } from "react-native-paper";
 
 export default function LocationScreen() {

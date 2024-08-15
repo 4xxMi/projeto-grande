@@ -13,12 +13,12 @@ import { Button } from 'react-native-paper';
         });
       };
       
-      const downloadResumable = FileSystem.createDownloadResumable(
-        'http://techslides.com/demos/sample-videos/small.mp4',
-        FileSystem.documentDirectory + 'small.mp4',
-        {},
-        callback
-      );
+      // const downloadResumable = FileSystem.createDownloadResumable(
+      //   'http://techslides.com/demos/sample-videos/small.mp4',
+      //   FileSystem.documentDirectory + 'small.mp4',
+      //   {},
+      //   callback
+      // );
       
       try {
         const { uri } = await downloadResumable.downloadAsync();

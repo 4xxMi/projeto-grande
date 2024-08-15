@@ -1,36 +1,28 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
-export default function MapScreen() {
-  const [selectedLocation, setSelectedLocation] = useState(null);
-
-  const handleMapPress = (event) => {
-    setSelectedLocation(event.nativeEvent.coordinate);
-  };
-
+export default function App() {
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        onPress={handleMapPress}
         initialRegion={{
-          latitude: -23.55052,
-          longitude: -46.633308,
+          latitude: -23.55052, // Latitude de São Paulo
+          longitude: -46.633308, // Longitude de São Paulo
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
       >
-        {selectedLocation && (
-          <Marker coordinate={selectedLocation} title="Selected Location" />
-        )}
+        <Marker
+          coordinate={{
+            latitude: -23.55052,
+            longitude: -46.633308,
+          }}
+          title="São Paulo"
+          description="Localização central em São Paulo"
+        />
       </MapView>
-      {selectedLocation && (
-        <View style={styles.location}>
-          <Text>Latitude: {selectedLocation.latitude}</Text>
-          <Text>Longitude: {selectedLocation.longitude}</Text>
-        </View>
-      )}
     </View>
   );
 }
@@ -38,16 +30,11 @@ export default function MapScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   map: {
-    flex: 1,
-  },
-  location: {
-    position: 'absolute',
-    bottom: 20,
-    left: 10,
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5,
+    width: '100%',
+    height: '100%',
   },
 });
